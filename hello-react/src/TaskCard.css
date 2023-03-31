@@ -1,0 +1,37 @@
+.TaskItem {
+    border: 3px solid #646363;
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin-bottom: 1rem;
+  }
+
+.container{
+  width: 400px;
+  padding: 0 1.5rem;
+  height: 400px;
+  margin: 3rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  border: 3px solid #646363;
+  display: inline-block;
+}
+
+.main{
+  font-size:35px;
+  margin: 1rem 0;
+}
+
+.h1{
+  font-size:25px;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.p{
+  font-size:20px;
+}
+
+.new{
+  background-color: #d3d3d3;
+  padding: 6px;
+}
