@@ -1,9 +1,10 @@
+import React from "react";
 import TaskCard from "./TaskCard";
 
 function App() {
   return (
-    <div class="grid grid-cols-6">
-      <div class="col-start-2 col-span-4">
+    <div className="grid grid-cols-6">
+      <div className="col-start-2 col-span-4">
         <p className="main">
           <strong>Smarter Tasks</strong>
         </p>
