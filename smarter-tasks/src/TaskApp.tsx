@@ -4,25 +4,33 @@ import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
-
-interface TaskAppProp { }
+interface TaskAppProp {}
 interface TaskAppState {
   tasks: TaskItem[];
 }
 
 const TaskApp = (props: TaskAppProp) => {
-  const [taskAppState, setTaskAppState] = useLocalStorage<TaskAppState>("tasks", {
-    tasks: [],
-  });
+  const [taskAppState, setTaskAppState] = useLocalStorage<TaskAppState>(
+    "tasks",
+    {
+      tasks: [],
+    }
+  );
   const addTask = (task: TaskItem) => {
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
   };
+  const deleteTask = (title: string) => {
+    setTaskAppState({
+      tasks: taskAppState.tasks.filter((task) => task.title !== title),
+    });
+  };
+
   return (
     <div>
       <TaskForm addTask={addTask} />
-      <TaskList tasks={taskAppState.tasks} />
+      <TaskList tasks={taskAppState.tasks} deleteTask={deleteTask} />
     </div>
   );
-}
+};
 
 export default TaskApp;

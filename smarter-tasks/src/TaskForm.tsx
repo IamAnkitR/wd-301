@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { TaskItem } from "./types";
 import "./TaskCard.css";
 
-
-
 interface TaskFormProps {
   addTask: (task: TaskItem) => void;
 }
@@ -14,21 +12,25 @@ interface TaskFormState {
 }
 
 const TaskForm = (props: TaskFormProps) => {
-  const [formState, setFormState] = React.useState<TaskFormState>({
+  const [formState, setFormState] = useState<TaskFormState>({
     title: "",
     description: "",
     dueDate: "",
-  })
+  });
 
   const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     console.log(`${event.target.value}`);
     setFormState({ ...formState, title: event.target.value });
   };
-  const descriptionChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+  const descriptionChanged: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
     console.log(`${event.target.value}`);
     setFormState({ ...formState, description: event.target.value });
   };
-  const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+  const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
     console.log(`${event.target.value}`);
     setFormState({ ...formState, dueDate: event.target.value });
   };
@@ -42,9 +44,6 @@ const TaskForm = (props: TaskFormProps) => {
     props.addTask(formState);
     setFormState({ title: "", description: "", dueDate: "" });
   };
-  ;
-
-
   return (
     <form onSubmit={addTask}>
       <div className="grid md:grid-cols-4 md:gap-3">
@@ -103,7 +102,8 @@ const TaskForm = (props: TaskFormProps) => {
         <div className="relative z-0 w-full mb-6 group">
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="addTaskButton"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            id="addTaskButton"
           >
             Add item
           </button>
@@ -111,6 +111,5 @@ const TaskForm = (props: TaskFormProps) => {
       </div>
     </form>
   );
-
-}
+};
 export default TaskForm;

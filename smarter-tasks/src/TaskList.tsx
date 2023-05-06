@@ -4,6 +4,7 @@ import { TaskItem } from "./types";
 
 interface Props {
   tasks: TaskItem[];
+  deleteTask: (title: string) => any;
 }
 
 const TaskList = (props: Props) => {
@@ -14,14 +15,15 @@ const TaskList = (props: Props) => {
         title={task.title}
         description={task.description}
         dueDate={task.dueDate}
+        deleteTask={props.deleteTask}
       />
-      <button>Delete</button>
     </li>
-
-
   ));
-  return <>{list}
-  </>
-}
+  return (
+    <>
+      <ol>{list}</ol>
+    </>
+  );
+};
 
 export default TaskList;
