@@ -16,6 +16,7 @@ const Task = (props: TaskProp) => {
       <p className="text-sm text-slate-500">Description: {props.description}</p>
       <button
         id="deleteTaskButton"
+        className="deleteTaskButton"
         onClick={() => {
           props.deleteTask(props.title);
         }}
