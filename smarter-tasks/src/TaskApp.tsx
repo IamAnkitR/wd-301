@@ -1,4 +1,3 @@
-import React from "react";
 import { TaskItem } from "./types";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
@@ -27,8 +26,27 @@ const TaskApp = (props: TaskAppProp) => {
 
   return (
     <div>
-      <TaskForm addTask={addTask} />
-      <TaskList tasks={taskAppState.tasks} deleteTask={deleteTask} />
+      <div className="grid grid-cols-6 ">
+        <div className="col-start-2 col-span-4">
+          <p className="text-3xl flex justify-center p-4">
+            <strong>Smarter Tasks</strong>
+          </p>
+          <p className="text-xl p-2 mb-4">
+            <strong>Project:</strong> Graduation Final Year Project (Tula's
+            Institue Dehradun)
+          </p>
+          <div className="addTask border-2 border-slate-700 p-6 m-1 justify-center flex">
+            <TaskForm addTask={addTask} />
+          </div>
+          <div className="container">
+            <h1 className="flex justify-center text-2xl font-thin m-2">
+              <strong>Pending</strong>
+            </h1>
+
+            <TaskList tasks={taskAppState.tasks} deleteTask={deleteTask} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

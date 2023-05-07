@@ -1,6 +1,3 @@
-import React from "react";
-import "./TaskCard.css";
-
 interface TaskProp {
   deleteTask: (title: string) => void;
   title: string;
@@ -10,13 +7,17 @@ interface TaskProp {
 
 const Task = (props: TaskProp) => {
   return (
-    <div className="TaskItem shadow-md border border-slate-100">
-      <h2 className="text-base font-bold my-1">{props.title}</h2>
-      <p className="text-sm text-slate-500">Due Date: {props.dueDate}</p>
-      <p className="text-sm text-slate-500">Description: {props.description}</p>
+    <div className="shadow-md border-2 border-slate-700 p-4 m-2 ">
+      <h2 className="text-base font-semibold text-xl pl-1 pb-2 ">
+        {props.title}
+      </h2>
+      <p className="text-sm text-slate-800 p-1">Due Date: {props.dueDate}</p>
+      <p className="text-sm text-slate-800 p-1">
+        Description: {props.description}
+      </p>
       <button
         id="deleteTaskButton"
-        className="deleteTaskButton"
+        className="deleteTaskButton border-2 border-black p-1 m-1 bg-red-800 border rounded"
         onClick={() => {
           props.deleteTask(props.title);
         }}
