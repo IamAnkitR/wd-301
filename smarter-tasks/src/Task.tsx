@@ -10,7 +10,7 @@ interface TaskProp {
 
 const Task = (props: TaskProp) => {
   return (
-    <div className="shadow-md border-2 border-slate-700 p-4 m-2 ">
+    <div className="TaskItem shadow-md border-2 border-slate-700 p-4 m-2 ">
       <Link to={`/tasks/${props.id}`}>
         <h2 className="text-base font-semibold text-xl pl-1 pb-2 ">
           {props.title}
