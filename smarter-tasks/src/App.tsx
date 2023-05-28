@@ -3,7 +3,6 @@ import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "./App.css";
 
 import Header from "./Header";
-import Footer from "./Footer";
 import HomePage from "./HomePage";
 import TaskApp from "./TaskApp";
 import TaskDetailsPage from "./TaskDetailsPage";
@@ -36,7 +35,6 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/notfound" replace />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
