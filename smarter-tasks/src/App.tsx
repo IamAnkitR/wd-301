@@ -6,10 +6,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 import HomePage from "./HomePage";
 import TaskApp from "./TaskApp";
-import TaskDetailsPage from "./TaskDetailspage";
+import TaskDetailsPage from "./TaskDetailsPage";
 import Signin from "./Signin";
 import { ProtectedRoute } from "./ProtectedRoute";
-import Notfound from "./Notfound";
+import NotFound from "./NotFound";
 
 function App() {
   const location = useLocation();
@@ -32,7 +32,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route
           path="/notfound"
-          element={<ProtectedRoute element={<Notfound />} />}
+          element={<ProtectedRoute element={<NotFound />} />}
         />
         <Route path="*" element={<Navigate to="/notfound" replace />} />
       </Routes>
