@@ -5,7 +5,7 @@ function Notfound() {
     <div>
       <h2>Error 404- Page does not exist</h2>
       <Link to="/">
-        <button className="backToHomeButton" id="BackToHomeButton">
+        <button className="backToHomeButton" id="backToHomeButton">
           GO Back
         </button>
       </Link>

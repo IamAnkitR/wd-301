@@ -39,10 +39,6 @@ const TaskApp = (props: TaskAppProp) => {
             <TaskForm addTask={addTask} />
           </div>
           <div className="container">
-            <h1 className="flex justify-center text-2xl font-thin m-2">
-              <strong>Pending</strong>
-            </h1>
-
             <TaskList tasks={taskAppState.tasks} deleteTask={deleteTask} />
           </div>
         </div>
