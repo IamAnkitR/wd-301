@@ -28,9 +28,6 @@ const TaskApp = (props: TaskAppProp) => {
     <div>
       <div className="grid grid-cols-6 ">
         <div className="col-start-2 col-span-4">
-          <p className="text-3xl flex justify-center p-4">
-            <strong>Smarter Tasks</strong>
-          </p>
           <p className="text-xl p-2 mb-4">
             <strong>Project:</strong> Graduation Final Year Project (Tula's
             Institue Dehradun)
