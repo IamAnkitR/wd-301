@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 interface TaskProp {
+  id: string;
   deleteTask: (title: string) => void;
   title: string;
   description: string;
@@ -8,9 +11,12 @@ interface TaskProp {
 const Task = (props: TaskProp) => {
   return (
     <div className="shadow-md border-2 border-slate-700 p-4 m-2 ">
-      <h2 className="text-base font-semibold text-xl pl-1 pb-2 ">
-        {props.title}
-      </h2>
+      <Link to={`/tasks/${props.id}`}>
+        <h2 className="text-base font-semibold text-xl pl-1 pb-2 ">
+          {props.title}
+        </h2>
+      </Link>
+
       <p className="text-sm text-slate-800 p-1">Due Date: {props.dueDate}</p>
       <p className="text-sm text-slate-800 p-1">
         Description: {props.description}
