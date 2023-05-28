@@ -12,7 +12,7 @@ interface TaskFormState {
 }
 
 const TaskForm = (props: TaskFormProps) => {
-  const uid = Date.now().toString(36);
+  const uid = Date.now().toString(24);
   const [formState, setFormState] = useState<TaskFormState>({
     id: uid,
     title: "",

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 interface TaskProp {
   id: string;
-  deleteTask: (title: string) => void;
+  deleteTask: (id: string) => void;
   title: string;
   description: string;
   dueDate: string;
@@ -25,7 +25,7 @@ const Task = (props: TaskProp) => {
         id="deleteTaskButton"
         className="deleteTaskButton border-2 border-black p-1 m-1 bg-red-800 border rounded"
         onClick={() => {
-          props.deleteTask(props.title);
+          props.deleteTask(props.id);
         }}
       >
         Delete

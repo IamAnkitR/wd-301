@@ -18,8 +18,7 @@ const TaskDetailsPage: React.FC = () => {
   });
 
   const task = taskAppState.tasks.find((task) => task.id === id);
-  console.log("the task you have got is: ", task);
-
+  console.log("Id is ", id);
   return (
     <div className="bg-white shadow-md rounded-md p-4">
       <div className="flex justify-between items-center mb-4">
