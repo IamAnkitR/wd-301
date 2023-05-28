@@ -38,10 +38,6 @@ const TaskForm = (props: TaskFormProps) => {
   };
   const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    if (formState.title.length === 0 || formState.dueDate.length === 0) {
-      alert("Add a title and due-date");
-      return;
-    }
     console.log(`Submitted the form with`);
     console.log(formState);
     props.addTask(formState);
