@@ -10,6 +10,8 @@ import Signin from "./Signin";
 import { ProtectedRoute } from "./ProtectedRoute";
 import NotFound from "./NotFound";
 
+import Form from "./Form";
+
 function App() {
   const location = useLocation();
   return (
@@ -17,6 +19,7 @@ function App() {
       {location.pathname !== "/signin" && location.pathname !== "/notfound" && (
         <Header />
       )}
+      <Form />
       <Routes>
         <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
 
