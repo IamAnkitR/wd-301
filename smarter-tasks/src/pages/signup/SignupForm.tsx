@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { API_ENDPOINT } from "../../config/constants";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm: React.FC = () => {
   const [organisationName, setOrganisationName] = useState("");
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,9 +29,18 @@ const SignupForm: React.FC = () => {
         throw new Error("Sign-up failed");
       }
       console.log("Sign-up successful");
+
+      //extract the response body as JSON data
       const data = await response.json();
+
+      // set the token in localStorage
       localStorage.setItem("authToken", data.token);
+
+      // set the userData in localStorage in form of String
       localStorage.setItem("userData", JSON.stringify(data.user));
+
+      // redirect user to dasboard after signup
+      navigate("/dashboard");
     } catch (error) {
       console.error("Sign-up failed:", error);
     }
