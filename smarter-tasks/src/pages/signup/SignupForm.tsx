@@ -83,6 +83,7 @@ const SignupForm: React.FC = () => {
           value={userEmail}
           onChange={(e) => setUserEmail(e.target.value)}
           className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          required
         />
       </div>
       <div>
@@ -96,6 +97,7 @@ const SignupForm: React.FC = () => {
           value={userPassword}
           onChange={(e) => setUserPassword(e.target.value)}
           className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          required
         />
       </div>
       <button
