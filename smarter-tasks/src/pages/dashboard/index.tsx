@@ -23,8 +23,8 @@ const Dashboard: React.FC = () => {
         <h2>Name = {userData.name}</h2>
         <h2>Email = {userData.email}</h2>
       </div>
-      <Link to="/signin">
-        <button onClick={handleClick} className="logOut" id="logout-link">
+      <Link to="/signin" id="logout-link">
+        <button onClick={handleClick} className="logOut" id="logOut">
           Log Out
         </button>
       </Link>

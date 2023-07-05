@@ -24,14 +24,15 @@ const SignupForm: React.FC = () => {
           password: userPassword,
         }),
       });
+      //extract the response body as JSON data
+      const data = await response.json();
+
+      console.log(data);
 
       if (!response.ok) {
         throw new Error("Sign-up failed");
       }
       console.log("Sign-up successful");
-
-      //extract the response body as JSON data
-      const data = await response.json();
 
       // set the token in localStorage
       localStorage.setItem("authToken", data.token);
