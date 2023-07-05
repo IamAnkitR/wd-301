@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
-  const userData = JSON.parse(localStorage.getItem("userData")!);
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
   const authToken = localStorage.getItem("authToken");
   console.log(authToken);
   console.log(userData.id);
