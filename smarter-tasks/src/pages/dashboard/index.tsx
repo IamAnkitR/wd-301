@@ -9,7 +9,7 @@ const Dashboard: React.FC = () => {
   console.log(userData.name);
   console.log(userData.email);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     localStorage.removeItem("userData");
     localStorage.removeItem("authToken");
   };
