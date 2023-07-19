@@ -4,10 +4,9 @@ import router from "./routes";
 import "./App.css";
 import { ThemeContext } from "./context/theme";
 const App = () => {
-  const currentTheme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
-    <div>
-      {currentTheme.theme}
+    <div className={`h-screen py-3 ${theme === "dark" ? "dark" : ""}`}>
       <RouterProvider router={router} />
     </div>
   );
