@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  organisationName: string;
+  userName: string;
+  userEmail: string;
+  userPassword: string;
+};
 
 const SignupForm: React.FC = () => {
-  const [organisationName, setOrganisationName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const { organisationName, userName, userEmail, userPassword } = data;
+    console.log(organisationName, userName, userEmail, userPassword);
     try {
       const response = await fetch(`${API_ENDPOINT}/organisations`, {
         method: "POST",
@@ -25,9 +34,9 @@ const SignupForm: React.FC = () => {
         }),
       });
       //extract the response body as JSON data
-      const data = await response.json();
-
-      console.log(data);
+      console.log(response);
+      const userData = await response.json();
+      console.log(userData);
 
       if (!response.ok) {
         throw new Error("Sign-up failed");
@@ -35,10 +44,10 @@ const SignupForm: React.FC = () => {
       console.log("Sign-up successful");
 
       // set the token in localStorage
-      localStorage.setItem("authToken", data.token);
+      localStorage.setItem("authToken", userData.token);
 
       // set the userData in localStorage in form of String
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      localStorage.setItem("userData", JSON.stringify(userData.user));
 
       // redirect user to dasboard after signup
       navigate("/account");
@@ -48,17 +57,16 @@ const SignupForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
           Organisation Name:
         </label>
         <input
           type="text"
-          name="organisationName"
           id="organisationName"
-          value={organisationName}
-          onChange={(e) => setOrganisationName(e.target.value)}
+          autoFocus
+          {...register("organisationName")}
           className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
         />
       </div>
@@ -68,24 +76,27 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="text"
-          name="userName"
           id="userName"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          autoFocus
+          {...register("userName", { required: true })}
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.userName ? "border-red-500" : " "
+          }`}
         />
+        {errors.userName && <span>This field is required</span>}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
           type="email"
-          name="userEmail"
           id="userEmail"
-          value={userEmail}
-          onChange={(e) => setUserEmail(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
-          required
+          autoFocus
+          {...register("userEmail", { required: "true" })}
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.userEmail ? "border-red-500" : " "
+          }`}
         />
+        {errors.userEmail && <span>This field is required</span>}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
@@ -93,13 +104,14 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="password"
-          name="userPassword"
           id="userPassword"
-          value={userPassword}
-          onChange={(e) => setUserPassword(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
-          required
+          autoFocus
+          {...register("userPassword", { required: "true" })}
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.userPassword ? "border-red-500" : " "
+          }`}
         />
+        {errors.userPassword && <span>This field is required</span>}
       </div>
       <button
         type="submit"
