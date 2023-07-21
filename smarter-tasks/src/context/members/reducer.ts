@@ -5,7 +5,7 @@ interface Member {
 }
 
 export interface MembersState {
-  Members: Member[];
+  members: Member[];
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;
@@ -19,7 +19,7 @@ export type MembersActions =
   | { type: "ADD_MEMBERS_SUCCESS"; payload: Member };
 
 export const initialState: MembersState = {
-  Members: [],
+  members: [],
   isLoading: false,
   isError: false,
   errorMessage: "",
@@ -39,7 +39,7 @@ export const reducer = (
       return {
         ...state,
         isLoading: false,
-        Members: action.payload,
+        members: action.payload,
       };
     case "FETCH_MEMBERS_FAILURE":
       return {
@@ -51,10 +51,10 @@ export const reducer = (
     case "DELETE_MEMBERS_SUCCESS":
       return {
         ...state,
-        Members: state.Members.filter((member) => member.id !== action.payload),
+        members: state.members.filter((member) => member.id !== action.payload),
       };
     case "ADD_MEMBERS_SUCCESS":
-      return { ...state, Members: [...state.Members, action.payload] };
+      return { ...state, members: [...state.members, action.payload] };
     default:
       return state;
   }
