@@ -1,6 +1,7 @@
 import React from "react";
 // Dialogue 1: Just import the file
 import SigninForm from "./SigninForm";
+import { Link } from "react-router-dom";
 
 const Signin: React.FC = () => {
   // Dialogue 2: And use it after the h1 tag
@@ -11,6 +12,14 @@ const Signin: React.FC = () => {
           Sign in
         </h1>
         <SigninForm />
+        <h2>
+          Don't have an account :{" "}
+          <Link to="/signup">
+            <button className="m-1 p-1 border-2  border-gray-400 rounded-lg">
+              Sign Up
+            </button>
+          </Link>
+        </h2>
       </div>
     </div>
   );
